@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
 	initCounters();
-	scrollToHash();
-	window.addEventListener('hashchange', scrollToHash, false);
+	handleMobileDeviceCheck();
+	window.addEventListener('resize', handleMobileDeviceCheck);
 });
+
+function handleMobileDeviceCheck() {
+	if (isMobileDevice()) {
+		window.removeEventListener('hashchange', scrollToHash);
+	} else {
+		scrollToHash();
+		window.addEventListener('hashchange', scrollToHash, false);
+	}
+}
 
 function initCounters() {
 	const counters = document.querySelectorAll('.count');
@@ -35,6 +44,12 @@ function scrollToHash() {
 		plugins: {}
 	});
 
+	if (isMobileDevice()) {
+		scrollbar.destroy();
+		return;
+	}
+
+
 	if (hash) {
 		const target = document.getElementById(hash.substring(1));
 		if (target) {
@@ -43,4 +58,8 @@ function scrollToHash() {
 			});
 		}
 	}
+}
+
+function isMobileDevice() {
+	return window.innerWidth <= 768;
 }
