@@ -615,4 +615,7 @@ h6 {
     .skill-cards-wrap {
         grid-template-columns: repeat(1, 1fr);
     }
+    .skill-cards-wrap {
+        grid-gap: 0;
+    }
 }
