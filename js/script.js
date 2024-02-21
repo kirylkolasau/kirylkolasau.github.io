@@ -38,11 +38,16 @@ function initCounters() {
 function scrollToHash() {
 	const hash = window.location.hash;
 	const docScrollbar = document.querySelector('#scrollbar');
+	if (!docScrollbar) {
+		return;
+	}
+
 	const scrollbar = Scrollbar.init(docScrollbar, {
 		continuousScrolling: false,
 		alwaysShowTracks: true,
 		plugins: {}
 	});
+
 
 	if (isMobileDevice()) {
 		scrollbar.destroy();
