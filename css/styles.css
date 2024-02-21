@@ -55,6 +55,8 @@ h6 {
     overflow: hidden;
 }
 .app.full-page {
+    font-size: 14px;
+    line-height: 21px;
     padding: 15px;
     background: #191923;
     width: 100%;
